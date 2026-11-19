@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #003D22;
+  --color-brand-deep: #002C19;
+  --color-brand-secondary: #07552C;
+  --color-brand-light: #0E773E;
+  --color-brand-yellow: #FFD600;
+  --color-brand-yellow-hover: #F0C800;
+  --color-brand-bg: #F7F7F5;
+  --color-brand-dark: #151515;
+  --color-brand-footer-dark: #0A120E;
+
+  --font-sans: 'Poppins', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-script: 'Caveat', cursive;
+}
+
+@layer base {
+  html, body {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #151515;
+  }
+}
+
+/* Custom Utilities */
+.font-script {
+  font-family: var(--font-script);
+}
+
+.text-brand-yellow {
+  color: #FFD600;
+}
+
+.bg-brand-primary {
+  background-color: #003D22;
+}
+
+.bg-brand-deep {
+  background-color: #002C19;
+}
+
+.bg-brand-secondary {
+  background-color: #07552C;
+}
+
+.bg-brand-yellow {
+  background-color: #FFD600;
+}
+
+/* Diagonal line subtle patterns matching the mockup */
+.pattern-stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.03) 0px,
+    rgba(255, 255, 255, 0.03) 2px,
+    transparent 2px,
+    transparent 12px
+  );
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #003D22;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #07552C;
+}
