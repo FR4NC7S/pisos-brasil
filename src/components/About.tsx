@@ -26,17 +26,17 @@ export const About: React.FC = () => {
     <section id="sobre" className="relative overflow-hidden bg-[#F7F7F5] py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 rounded-3xl overflow-hidden shadow-xl border border-gray-200/70">
-          {/* Left Side: Architectural Photo matching mockup */}
-          <div className="lg:col-span-5 relative min-h-[380px] sm:min-h-[460px] lg:min-h-full bg-gray-900 overflow-hidden">
+          {/* Left Side: Storefront / Showroom Photo */}
+          <div className="lg:col-span-6 relative min-h-[380px] sm:min-h-[460px] lg:min-h-[520px] bg-gray-900 overflow-hidden">
             <picture>
-              <source srcSet="/images/about_entrance.webp?v=2" type="image/webp" />
+              <source srcSet="/images/about_store.webp" type="image/webp" />
               <img
-                src="/images/about_entrance.jpg?v=2"
+                src="/images/about_store.jpg"
                 onError={(e) => {
-                  ;(e.target as HTMLImageElement).src = '/images/mock_crops/about_img.jpg'
+                  ;(e.target as HTMLImageElement).src = '/images/about_entrance.webp'
                 }}
-                alt="Entrada residencial moderna com pisos e calçada Pisos Brasil"
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                alt="Fachada e Showroom da Pisos Brasil em São José do Rio Preto"
+                className="w-full h-full object-cover object-[56%_center] transition-transform duration-700 hover:scale-105"
                 loading="lazy"
               />
             </picture>
@@ -44,7 +44,7 @@ export const About: React.FC = () => {
           </div>
 
           {/* Right Side: Institutional Dark Green Box matching mockup */}
-          <div className="lg:col-span-7 bg-[#002C19] p-8 sm:p-10 md:p-14 text-white relative pattern-stripes">
+          <div className="lg:col-span-6 bg-[#002C19] p-8 sm:p-10 md:p-12 text-white relative pattern-stripes flex flex-col justify-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
