@@ -45,17 +45,19 @@ export const TopBar: React.FC = () => {
             <span>{COMPANY_INFO.whatsappDisplay}</span>
           </a>
 
-          {/* Instagram */}
-          <a
-            href={COMPANY_INFO.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-1 rounded-full text-gray-200 hover:text-[#FFD600] hover:bg-[#07552C] transition-colors"
-            aria-label="Instagram da Pisos Brasil"
-            title="Siga a Pisos Brasil no Instagram"
-          >
-            <InstagramIcon className="w-3.5 h-3.5" />
-          </a>
+          {/* Instagram (conditional if configured) */}
+          {COMPANY_INFO.instagram && (
+            <a
+              href={COMPANY_INFO.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1 rounded-full text-gray-200 hover:text-[#FFD600] hover:bg-[#07552C] transition-colors"
+              aria-label="Instagram da Pisos Brasil"
+              title="Siga a Pisos Brasil no Instagram"
+            >
+              <InstagramIcon className="w-3.5 h-3.5" />
+            </a>
+          )}
         </div>
       </div>
     </div>

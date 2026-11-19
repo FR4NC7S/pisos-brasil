@@ -12,8 +12,8 @@ export interface CompanyInfo {
   phoneRaw: string
   whatsappDisplay: string
   whatsappRaw: string
-  instagram: string
-  instagramHandle: string
+  instagram?: string | null
+  instagramHandle?: string | null
   workingHoursWeekday: string
   workingHoursSaturday: string
 }
@@ -32,8 +32,8 @@ export const COMPANY_INFO: CompanyInfo = {
   phoneRaw: '+551732267397',
   whatsappDisplay: '(17) 99774-6006',
   whatsappRaw: '5517997746006',
-  instagram: 'https://www.instagram.com/pisosbrasil',
-  instagramHandle: '@pisosbrasil',
+  instagram: null,
+  instagramHandle: null,
   workingHoursWeekday: 'Segunda a Sexta: 07:30 às 18:00',
   workingHoursSaturday: 'Sábado: 08:00 às 12:00',
 }

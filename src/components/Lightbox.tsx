@@ -89,10 +89,12 @@ export const Lightbox: React.FC<LightboxProps> = ({
       >
         <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-black">
           <img
-            src={currentItem.fallbackImage || currentItem.image}
+            src={currentItem.image}
             alt={currentItem.title}
             onError={(e) => {
-              ;(e.target as HTMLImageElement).src = currentItem.image
+              if (currentItem.fallbackImage) {
+                ;(e.target as HTMLImageElement).src = currentItem.fallbackImage
+              }
             }}
             className="max-h-[70vh] w-auto object-contain rounded-xl select-none"
           />

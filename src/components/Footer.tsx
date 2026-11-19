@@ -117,16 +117,29 @@ export const Footer: React.FC = () => {
             © 2026 Pisos Brasil. Todos os direitos reservados.
           </p>
 
-          {/* Social Instagram on the right */}
-          <a
-            href={COMPANY_INFO.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-xs font-medium text-gray-300 hover:text-[#FFD600] transition-colors shrink-0"
-          >
-            <InstagramIcon className="w-4 h-4 text-[#FFD600]" />
-            <span>Siga-nos</span>
-          </a>
+          {/* Social or WhatsApp Contact on the right */}
+          {COMPANY_INFO.instagram ? (
+            <a
+              href={COMPANY_INFO.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-xs font-medium text-gray-300 hover:text-[#FFD600] transition-colors shrink-0"
+            >
+              <InstagramIcon className="w-4 h-4 text-[#FFD600]" />
+              <span>Siga-nos</span>
+            </a>
+          ) : (
+            <a
+              href={getWhatsAppUrl(WHATSAPP_MESSAGES.header)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-xs font-semibold text-gray-300 hover:text-[#25D366] transition-colors shrink-0"
+              title="Fale conosco pelo WhatsApp"
+            >
+              <MessageCircle className="w-4 h-4 text-[#25D366]" />
+              <span>(17) 99774-6006</span>
+            </a>
+          )}
         </div>
       </div>
     </footer>
