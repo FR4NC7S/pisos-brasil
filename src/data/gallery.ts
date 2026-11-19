@@ -52,8 +52,8 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: 'galeria-6',
     title: 'Entrada Social Contemporânea',
     category: 'Pisos e Revestimentos',
-    image: '/images/about_entrance.webp',
-    fallbackImage: '/images/about_entrance.jpg',
+    image: '/images/about_entrance.webp?v=2',
+    fallbackImage: '/images/about_entrance.jpg?v=2',
     description: 'Composição de pisos de grande formato com jardineiras e porta imponente.',
   },
 ]

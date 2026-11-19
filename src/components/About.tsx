@@ -29,9 +29,9 @@ export const About: React.FC = () => {
           {/* Left Side: Architectural Photo matching mockup */}
           <div className="lg:col-span-5 relative min-h-[380px] sm:min-h-[460px] lg:min-h-full bg-gray-900 overflow-hidden">
             <picture>
-              <source srcSet="/images/about_entrance.webp" type="image/webp" />
+              <source srcSet="/images/about_entrance.webp?v=2" type="image/webp" />
               <img
-                src="/images/about_entrance.jpg"
+                src="/images/about_entrance.jpg?v=2"
                 onError={(e) => {
                   ;(e.target as HTMLImageElement).src = '/images/mock_crops/about_img.jpg'
                 }}
