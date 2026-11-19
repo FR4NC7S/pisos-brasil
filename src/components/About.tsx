@@ -1,7 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Award, ShieldCheck, Users, MessageCircle } from 'lucide-react'
+import { Award, ShieldCheck, Users } from 'lucide-react'
 import { getWhatsAppUrl, WHATSAPP_MESSAGES } from '../data/company'
+import { WhatsAppIcon } from './WhatsAppIcon'
 
 export const About: React.FC = () => {
   const differentials = [
@@ -104,7 +105,7 @@ export const About: React.FC = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2.5 bg-[#FFD600] hover:bg-[#F0C800] text-[#002C19] font-bold px-6 py-3 rounded-full text-sm shadow-md transition-all duration-200 hover:scale-[1.03] active:scale-[0.98]"
                 >
-                  <MessageCircle className="w-4 h-4 fill-current" />
+                  <WhatsAppIcon className="w-4 h-4 text-[#002C19]" />
                   <span>Falar com Nossa Equipe</span>
                 </a>
 

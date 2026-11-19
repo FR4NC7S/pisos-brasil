@@ -1,6 +1,7 @@
 import React from 'react'
-import { MapPin, CheckCircle, Navigation, MessageCircle } from 'lucide-react'
+import { MapPin, CheckCircle, Navigation } from 'lucide-react'
 import { getWhatsAppUrl } from '../data/company'
+import { WhatsAppIcon } from './WhatsAppIcon'
 
 export const LocalSEO: React.FC = () => {
   const cities = [
@@ -83,7 +84,7 @@ export const LocalSEO: React.FC = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-[#003D22] hover:bg-[#07552C] text-white text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-full shadow-sm transition-all"
                 >
-                  <MessageCircle className="w-4 h-4 text-[#FFD600]" />
+                  <WhatsAppIcon className="w-4 h-4 text-[#FFD600]" />
                   <span>Consultar Frete para Minha Cidade</span>
                 </a>
               </div>

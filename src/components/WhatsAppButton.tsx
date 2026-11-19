@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { MessageCircle, X } from 'lucide-react'
+import { X } from 'lucide-react'
 import { getWhatsAppUrl, WHATSAPP_MESSAGES } from '../data/company'
+import { WhatsAppIcon } from './WhatsAppIcon'
 
 export const WhatsAppButton: React.FC = () => {
   const [showTooltip, setShowTooltip] = useState(true)
@@ -36,7 +37,7 @@ export const WhatsAppButton: React.FC = () => {
         {/* Radar wave pulse */}
         <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-75 animate-ping duration-1000 -z-10" />
 
-        <MessageCircle className="w-7 h-7 fill-current" />
+        <WhatsAppIcon className="w-7 h-7 text-white" />
       </a>
     </div>
   )

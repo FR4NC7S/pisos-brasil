@@ -1,6 +1,7 @@
 import React from 'react'
-import { MessageCircle, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { getWhatsAppUrl, WHATSAPP_MESSAGES } from '../data/company'
+import { WhatsAppIcon } from './WhatsAppIcon'
 
 export const Hero: React.FC = () => {
   return (
@@ -56,7 +57,7 @@ export const Hero: React.FC = () => {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-2.5 sm:gap-3 bg-[#FFD600] hover:bg-[#F0C800] text-[#002C19] font-bold text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3.5 rounded-full shadow-lg shadow-black/25 transition-all duration-200 hover:scale-[1.03] active:scale-[0.98]"
               >
-                <MessageCircle className="w-5 h-5 text-[#002C19] shrink-0 fill-current" />
+                <WhatsAppIcon className="w-5 h-5 text-[#002C19] shrink-0" />
                 <span>Solicite um Orçamento</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>

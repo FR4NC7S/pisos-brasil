@@ -1,7 +1,8 @@
 import React from 'react'
-import { MapPin, Phone, MessageCircle } from 'lucide-react'
+import { MapPin, Phone } from 'lucide-react'
 import { COMPANY_INFO, getWhatsAppUrl, WHATSAPP_MESSAGES } from '../data/company'
 import { InstagramIcon } from './InstagramIcon'
+import { WhatsAppIcon } from './WhatsAppIcon'
 
 export const TopBar: React.FC = () => {
   return (
@@ -38,10 +39,10 @@ export const TopBar: React.FC = () => {
             href={getWhatsAppUrl(WHATSAPP_MESSAGES.header)}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 text-gray-200 hover:text-[#FFD600] transition-colors"
+            className="flex items-center gap-1.5 text-gray-200 hover:text-[#FFD600] transition-colors"
             title="Conversar pelo WhatsApp"
           >
-            <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
+            <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
             <span>{COMPANY_INFO.whatsappDisplay}</span>
           </a>
 

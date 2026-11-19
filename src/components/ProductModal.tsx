@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import { X, MessageCircle, CheckCircle2, MapPin, Sparkles } from 'lucide-react'
+import { X, CheckCircle2, MapPin, Sparkles } from 'lucide-react'
 import type { ProductCategory } from '../data/products'
 import { getWhatsAppUrl } from '../data/company'
+import { WhatsAppIcon } from './WhatsAppIcon'
 
 interface ProductModalProps {
   product: ProductCategory | null
@@ -121,7 +122,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
               rel="noopener noreferrer"
               className="flex-1 inline-flex items-center justify-center gap-2.5 bg-[#003D22] hover:bg-[#07552C] text-white px-6 py-3.5 rounded-full font-bold text-sm sm:text-base shadow-md transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
-              <MessageCircle className="w-5 h-5 text-[#FFD600]" />
+              <WhatsAppIcon className="w-5 h-5 text-[#FFD600]" />
               <span>Solicitar Orçamento no WhatsApp</span>
             </a>
             <button

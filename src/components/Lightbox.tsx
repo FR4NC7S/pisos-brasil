@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import { X, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 import type { GalleryItem } from '../data/gallery'
 import { getWhatsAppUrl } from '../data/company'
+import { WhatsAppIcon } from './WhatsAppIcon'
 
 interface LightboxProps {
   items: GalleryItem[]
@@ -120,7 +121,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1EBE5D] text-white px-5 py-2.5 rounded-full font-bold text-xs sm:text-sm shrink-0 shadow-md transition-all hover:scale-105"
           >
-            <MessageCircle className="w-4 h-4 fill-current" />
+            <WhatsAppIcon className="w-4 h-4 text-white" />
             <span>Orçar Esse Estilo</span>
           </a>
         </div>

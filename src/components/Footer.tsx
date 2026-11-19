@@ -1,7 +1,8 @@
 import React from 'react'
-import { MessageCircle, Phone, MapPin, ExternalLink } from 'lucide-react'
+import { Phone, MapPin, ExternalLink } from 'lucide-react'
 import { COMPANY_INFO, getWhatsAppUrl, WHATSAPP_MESSAGES } from '../data/company'
 import { InstagramIcon } from './InstagramIcon'
+import { WhatsAppIcon } from './WhatsAppIcon'
 
 export const Footer: React.FC = () => {
   return (
@@ -19,7 +20,7 @@ export const Footer: React.FC = () => {
                 className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#07552C] hover:bg-[#25D366] text-[#FFD600] hover:text-white flex items-center justify-center shrink-0 transition-all duration-200 shadow-md group"
                 aria-label="Falar pelo WhatsApp"
               >
-                <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 fill-current" />
+                <WhatsAppIcon className="w-6 h-6 sm:w-7 sm:h-7" />
               </a>
               <div className="min-w-0">
                 <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
@@ -61,7 +62,7 @@ export const Footer: React.FC = () => {
                     rel="noopener noreferrer"
                     className="hover:text-[#FFD600] transition-colors flex items-center gap-2 truncate"
                   >
-                    <MessageCircle className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
+                    <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
                     <span>{COMPANY_INFO.whatsappDisplay} (WhatsApp)</span>
                   </a>
                 </div>
@@ -136,7 +137,7 @@ export const Footer: React.FC = () => {
               className="flex items-center gap-1.5 text-xs font-semibold text-gray-300 hover:text-[#25D366] transition-colors shrink-0"
               title="Fale conosco pelo WhatsApp"
             >
-              <MessageCircle className="w-4 h-4 text-[#25D366]" />
+              <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
               <span>(17) 99774-6006</span>
             </a>
           )}

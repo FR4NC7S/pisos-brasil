@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { MessageCircle, Menu, X, Phone, MapPin } from 'lucide-react'
+import { Menu, X, Phone, MapPin } from 'lucide-react'
 import { COMPANY_INFO, getWhatsAppUrl, WHATSAPP_MESSAGES } from '../data/company'
+import { WhatsAppIcon } from './WhatsAppIcon'
 
 interface HeaderProps {
   activeSection?: string
@@ -100,7 +101,7 @@ export const Header: React.FC<HeaderProps> = ({ activeSection = 'inicio' }) => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-[#003D22] hover:bg-[#07552C] text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-sm transition-all duration-200 hover:shadow-md hover:scale-[1.03] active:scale-[0.98]"
           >
-            <MessageCircle className="w-4 h-4 text-[#FFD600] shrink-0" />
+            <WhatsAppIcon className="w-4 h-4 text-[#FFD600] shrink-0" />
             <span>Fale Conosco</span>
           </a>
         </div>
@@ -151,7 +152,7 @@ export const Header: React.FC<HeaderProps> = ({ activeSection = 'inicio' }) => {
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 bg-[#003D22] hover:bg-[#07552C] text-white py-3 rounded-full font-semibold shadow-md text-base"
               >
-                <MessageCircle className="w-5 h-5 text-[#FFD600]" />
+                <WhatsAppIcon className="w-5 h-5 text-[#FFD600]" />
                 <span>Fale Conosco no WhatsApp</span>
               </a>
 
