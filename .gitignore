@@ -30,3 +30,4 @@ extracted_slices/
 !public/**/*.png
 
 .vercel
+*.zip
