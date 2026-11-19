@@ -28,3 +28,5 @@ extracted_slices/
 *.png
 !public/*.png
 !public/**/*.png
+
+.vercel
