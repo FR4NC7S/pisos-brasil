@@ -8,9 +8,9 @@ export const Hero: React.FC = () => {
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
         <picture>
-          <source srcSet="/images/hero_layout.webp?v=2" type="image/webp" />
+          <source srcSet="/images/hero_layout.webp?v=3" type="image/webp" />
           <img
-            src="/images/hero_layout.jpg?v=2"
+            src="/images/hero_layout.jpg?v=3"
             onError={(e) => {
               ;(e.target as HTMLImageElement).src = '/images/hero_bg.jpg'
             }}
