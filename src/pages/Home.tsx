@@ -7,69 +7,42 @@ import { Products } from '../components/Products'
 import { About } from '../components/About'
 import { Gallery } from '../components/Gallery'
 import { LocalSEO } from '../components/LocalSEO'
+import { Location } from '../components/Location'
 import { Footer } from '../components/Footer'
 import { WhatsAppButton } from '../components/WhatsAppButton'
 
 export const Home: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<string>('inicio')
-
+  const [activeSection, setActiveSection] = useState('inicio')
   useEffect(() => {
-    const sectionIds = ['inicio', 'produtos', 'sobre', 'galeria', 'contato']
-
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 120
-
-      for (const id of sectionIds) {
-        const el = document.getElementById(id)
-        if (el) {
-          const top = el.offsetTop
-          const height = el.offsetHeight
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(id)
-            break
-          }
+    const ids = ['inicio', 'produtos', 'sobre', 'galeria', 'localizacao']
+    const onScroll = () => {
+      const position = window.scrollY + 170
+      for (const id of ids) {
+        const element = document.getElementById(id)
+        if (element && position >= element.offsetTop && position < element.offsetTop + element.offsetHeight) {
+          setActiveSection(id)
+          return
         }
       }
     }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll()
-
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
   return (
-    <div className="min-h-screen flex flex-col bg-white text-[#151515] relative selection:bg-[#FFD600] selection:text-[#002C19] w-full max-w-full overflow-x-hidden">
-      {/* Top Bar with Contacts & Address */}
+    <div className="min-h-screen flex flex-col bg-white text-[#173A28] selection:bg-[#F7D84D] selection:text-[#082D1F] overflow-x-hidden">
       <TopBar />
-
-      {/* Main Sticky Header */}
       <Header activeSection={activeSection} />
-
-      {/* Hero Banner with Pool & Pavers */}
-      <main className="flex-1 w-full max-w-full overflow-x-hidden">
+      <main className="flex-1">
         <Hero />
-
-        {/* Benefits Bar */}
         <Benefits />
-
-        {/* Products Section */}
         <Products />
-
-        {/* About Section */}
         <About />
-
-        {/* Gallery Section */}
         <Gallery />
-
-        {/* Regional SEO Section */}
         <LocalSEO />
+        <Location />
       </main>
-
-      {/* Footer */}
       <Footer />
-
-      {/* Floating WhatsApp Action Button */}
       <WhatsAppButton />
     </div>
   )

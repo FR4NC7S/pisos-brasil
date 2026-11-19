@@ -35,11 +35,11 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100 animate-in zoom-in-95 duration-200"
+        className="relative w-full max-w-2xl max-h-[calc(100dvh-2rem)] bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100 flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header Image */}
-        <div className="relative h-56 sm:h-64 bg-gray-900 overflow-hidden">
+        <div className="relative h-44 sm:h-56 bg-gray-900 overflow-hidden shrink-0">
           <img
             src={product.image}
             alt={product.name}
@@ -71,7 +71,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 sm:p-8 space-y-6 max-h-[70vh] overflow-y-auto">
+        <div className="p-5 sm:p-8 space-y-6 min-h-0 overflow-y-auto">
           {/* Tagline & Description */}
           <div>
             <p className="text-base sm:text-lg font-medium text-[#003D22] mb-2">

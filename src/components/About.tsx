@@ -1,122 +1,38 @@
 import React from 'react'
-import { motion } from 'framer-motion'
-import { Award, ShieldCheck, Users } from 'lucide-react'
-import { getWhatsAppUrl, WHATSAPP_MESSAGES } from '../data/company'
-import { WhatsAppIcon } from './WhatsAppIcon'
+import { ArrowUpRight, BadgeCheck, MessageCircleMore, PanelsTopLeft } from 'lucide-react'
+import { COMPANY_INFO, getWhatsAppUrl, WHATSAPP_MESSAGES } from '../data/company'
 
-export const About: React.FC = () => {
-  const differentials = [
-    {
-      icon: Award,
-      title: 'Experiência e conhecimento do mercado',
-      desc: 'Amplo domínio técnico em materiais, paginações e normas de assentamento para obras residenciais e comerciais.',
-    },
-    {
-      icon: ShieldCheck,
-      title: 'Produtos de qualidade',
-      desc: 'Seleção rigorosa de matérias-primas e controle dimensional que garantem resistência superior e acabamento impecável.',
-    },
-    {
-      icon: Users,
-      title: 'Equipe qualificada e pronta para atender',
-      desc: 'Consultoria dedicada e atendimento personalizado para orientar a melhor solução do seu projeto.',
-    },
-  ]
+const points = [
+  { icon: BadgeCheck, title: 'Materiais bem selecionados', text: 'Acabamentos para projetos que exigem qualidade e durabilidade.' },
+  { icon: PanelsTopLeft, title: 'Opções para cada estilo', text: 'Do clássico ao contemporâneo, para dentro e fora de casa.' },
+  { icon: MessageCircleMore, title: 'Atendimento personalizado', text: 'Converse com nossa equipe e encontre a solução ideal.' },
+]
 
-  return (
-    <section id="sobre" className="relative overflow-hidden bg-[#F7F7F5] py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 rounded-3xl overflow-hidden shadow-xl border border-gray-200/70">
-          {/* Left Side: Storefront / Showroom Photo */}
-          <div className="lg:col-span-6 relative min-h-[380px] sm:min-h-[460px] lg:min-h-[520px] bg-gray-900 overflow-hidden">
-            <picture>
-              <source srcSet="/images/about_store.webp" type="image/webp" />
-              <img
-                src="/images/about_store.jpg"
-                onError={(e) => {
-                  ;(e.target as HTMLImageElement).src = '/images/about_entrance.webp'
-                }}
-                alt="Fachada e Showroom da Pisos Brasil em São José do Rio Preto"
-                className="w-full h-full object-cover object-[56%_center] transition-transform duration-700 hover:scale-105"
-                loading="lazy"
-              />
-            </picture>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:hidden" />
-          </div>
-
-          {/* Right Side: Institutional Dark Green Box matching mockup */}
-          <div className="lg:col-span-6 bg-[#002C19] p-8 sm:p-10 md:p-12 text-white relative pattern-stripes flex flex-col justify-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              {/* Tag */}
-              <span className="text-xs font-bold uppercase tracking-[0.25em] text-gray-300 block">
-                SOBRE A PISOS BRASIL
-              </span>
-
-              {/* Title with yellow highlight */}
-              <h2 className="mt-3 text-3xl sm:text-4xl lg:text-[2.6rem] font-extrabold tracking-tight leading-[1.18]">
-                <span>Tradição e confiança</span>
-                <span className="block text-[#FFD600]">em cada detalhe.</span>
-              </h2>
-
-              {/* Description */}
-              <p className="mt-5 text-sm sm:text-base text-gray-200/95 leading-relaxed font-normal">
-                A Pisos Brasil é especializada em pisos, revestimentos, calçadas, pedras e elementos para construção, oferecendo produtos com excelente acabamento e durabilidade. Nosso compromisso é levar o melhor para o seu projeto, com atendimento personalizado e preços justos.
-              </p>
-
-              {/* 3 Differentials with circular icons */}
-              <div className="mt-8 space-y-5">
-                {differentials.map((item, index) => {
-                  const Icon = item.icon
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.12 }}
-                      className="flex items-start gap-4 group"
-                    >
-                      <div className="w-11 h-11 rounded-full bg-[#07552C] group-hover:bg-[#FFD600] flex items-center justify-center shrink-0 border border-[#0F7A40]/50 transition-colors duration-200 shadow-sm">
-                        <Icon className="w-5 h-5 text-[#FFD600] group-hover:text-[#002C19] transition-colors duration-200" />
-                      </div>
-                      <div className="pt-0.5">
-                        <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-[#FFD600] transition-colors">
-                          {item.title}
-                        </h3>
-                        <p className="mt-1 text-xs sm:text-sm text-gray-300/90 leading-normal">
-                          {item.desc}
-                        </p>
-                      </div>
-                    </motion.div>
-                  )
-                })}
-              </div>
-
-              {/* CTA button */}
-              <div className="mt-10 pt-6 border-t border-[#07552C]/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <a
-                  href={getWhatsAppUrl(WHATSAPP_MESSAGES.header)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 bg-[#FFD600] hover:bg-[#F0C800] text-[#002C19] font-bold px-6 py-3 rounded-full text-sm shadow-md transition-all duration-200 hover:scale-[1.03] active:scale-[0.98]"
-                >
-                  <WhatsAppIcon className="w-4 h-4 text-[#002C19]" />
-                  <span>Falar com Nossa Equipe</span>
-                </a>
-
-                <span className="text-xs text-gray-300">
-                  São José do Rio Preto e toda a região
-                </span>
-              </div>
-            </motion.div>
-          </div>
+export const About: React.FC = () => (
+  <section id="sobre" className="section-padding bg-white">
+    <div className="site-container grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div className="relative">
+        <div className="overflow-hidden rounded-[28px] bg-[#EAF0E9] aspect-[4/4.1] sm:aspect-[5/4.3] lg:aspect-[4/4.4]">
+          <img src="/images/about_store.webp" alt="Fachada da loja Pisos Brasil em São José do Rio Preto" loading="lazy" className="w-full h-full object-cover object-center" />
         </div>
+        <a href={COMPANY_INFO.googleMapsUrl} target="_blank" rel="noopener noreferrer" className="absolute bottom-4 left-4 right-4 sm:right-auto sm:bottom-7 sm:left-7 inline-flex items-center gap-3 rounded-2xl bg-white/95 backdrop-blur-md px-4 py-3.5 sm:pr-6 shadow-xl text-[#17432C] hover:translate-y-[-3px] transition-transform">
+          <span className="w-11 h-11 rounded-xl bg-[#F7D84D] inline-flex items-center justify-center"><ArrowUpRight className="w-5 h-5" /></span>
+          <span><strong className="block text-sm">Conheça nossa loja</strong><small className="block text-xs text-[#647466] mt-1">São José do Rio Preto · SP</small></span>
+        </a>
       </div>
-    </section>
-  )
-}
+      <div className="lg:py-4">
+        <span className="section-eyebrow">QUEM SOMOS</span>
+        <h2 className="section-heading mt-3">Cada detalhe faz a <span className="text-[#147544]">diferença.</span></h2>
+        <p className="section-description mt-5">Na Pisos Brasil, ajudamos a transformar ideias em ambientes mais bonitos, funcionais e duráveis. Reunimos uma seleção de pisos, revestimentos, pedras e materiais para sua construção ou reforma.</p>
+        <p className="text-sm sm:text-[15px] text-[#66756D] leading-[1.85] mt-4">Estamos em São José do Rio Preto, com atendimento dedicado para quem busca boas opções e orientação na hora de escolher.</p>
+        <div className="mt-8 space-y-5">
+          {points.map(point => { const Icon = point.icon; return <div key={point.title} className="flex gap-4 items-start">
+            <span className="w-11 h-11 rounded-xl bg-[#EEF6F0] text-[#0D7545] flex items-center justify-center shrink-0"><Icon className="w-5 h-5" /></span>
+            <div><h3 className="font-bold text-[#153C28] text-sm sm:text-base">{point.title}</h3><p className="mt-1 text-sm leading-relaxed text-[#718078]">{point.text}</p></div>
+          </div>})}
+        </div>
+        <a href={getWhatsAppUrl(WHATSAPP_MESSAGES.general)} target="_blank" rel="noopener noreferrer" className="btn-primary mt-9">Fale com nossa equipe <ArrowUpRight className="w-4 h-4" /></a>
+      </div>
+    </div>
+  </section>
+)

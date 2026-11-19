@@ -1,177 +1,63 @@
-import React, { useState, useEffect } from 'react'
-import { Menu, X, Phone, MapPin } from 'lucide-react'
-import { COMPANY_INFO, getWhatsAppUrl, WHATSAPP_MESSAGES } from '../data/company'
+import React, { useEffect, useState } from 'react'
+import { ArrowUpRight, Menu, X } from 'lucide-react'
+import { getWhatsAppUrl, WHATSAPP_MESSAGES } from '../data/company'
 import { WhatsAppIcon } from './WhatsAppIcon'
 
-interface HeaderProps {
-  activeSection?: string
-}
+interface HeaderProps { activeSection?: string }
+
+const links = [
+  { label: 'Início', id: 'inicio' },
+  { label: 'Produtos', id: 'produtos' },
+  { label: 'Sobre nós', id: 'sobre' },
+  { label: 'Ambientes', id: 'galeria' },
+  { label: 'Localização', id: 'localizacao' },
+]
 
 export const Header: React.FC<HeaderProps> = ({ activeSection = 'inicio' }) => {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30)
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    const onScroll = () => setScrolled(window.scrollY > 16)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const navLinks = [
-    { label: 'Início', href: '#inicio', id: 'inicio' },
-    { label: 'Produtos', href: '#produtos', id: 'produtos' },
-    { label: 'Sobre Nós', href: '#sobre', id: 'sobre' },
-    { label: 'Galeria', href: '#galeria', id: 'galeria' },
-    { label: 'Contato', href: '#contato', id: 'contato' },
-  ]
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault()
-    setMobileMenuOpen(false)
-    const target = document.querySelector(href)
-    if (target) {
-      const topOffset = 80
-      const elementPosition = target.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - topOffset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      })
-    }
-  }
+  useEffect(() => {
+    if (!menuOpen) return
+    const closeOnEscape = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenuOpen(false) }
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [menuOpen])
 
   return (
-    <header
-      className={`sticky top-0 z-50 transition-all duration-300 w-full bg-white ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-md py-2 sm:py-2.5'
-          : 'py-2.5 sm:py-3.5 shadow-sm'
-      }`}
-    >
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3">
-        {/* Brand Logo */}
-        <a
-          href="#inicio"
-          onClick={(e) => handleNavClick(e, '#inicio')}
-          className="flex items-center gap-2 group transition-transform duration-200 hover:scale-[1.02] shrink-0"
-          aria-label="Pisos Brasil - Página Inicial"
-        >
-          <img
-            src="/logo.png"
-            alt="Pisos Brasil - Pisos e Revestimentos"
-            className="h-8 sm:h-10 md:h-11 w-auto object-contain"
-            width={140}
-            height={44}
-          />
+    <header className={`sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-[#E8EBE6] transition-shadow duration-300 ${scrolled ? 'shadow-[0_9px_35px_rgba(9,42,26,0.09)]' : ''}`}>
+      <div className="site-container flex items-center justify-between gap-5 min-h-[78px] lg:min-h-[92px]">
+        <a href="#inicio" aria-label="Pisos Brasil — ir ao início" onClick={() => setMenuOpen(false)} className="shrink-0">
+          <img src="/logo.png" alt="Pisos Brasil" className="w-[168px] sm:w-[198px] lg:w-[220px] h-auto object-contain" width="220" height="76" />
         </a>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8 shrink-0" aria-label="Menu Principal">
-          {navLinks.map((link) => {
-            const isActive = activeSection === link.id
-            return (
-              <a
-                key={link.id}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`relative py-1 text-sm font-semibold transition-colors duration-200 ${
-                  isActive
-                    ? 'text-[#003D22] font-bold'
-                    : 'text-gray-700 hover:text-[#003D22]'
-                }`}
-              >
-                {link.label}
-                {/* Active indicator bar matching mockup */}
-                {isActive && (
-                  <span className="absolute bottom-[-6px] left-0 right-0 h-[3px] bg-[#003D22] rounded-full transition-all" />
-                )}
-              </a>
-            )
-          })}
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Navegação principal">
+          {links.map(link => <a key={link.id} href={`#${link.id}`} aria-current={activeSection === link.id ? 'page' : undefined} className={`text-[13px] xl:text-sm font-semibold relative py-4 transition-colors hover:text-[#087242] ${activeSection === link.id ? 'text-[#075B37]' : 'text-[#46544B]'}`}>
+            {link.label}
+            {activeSection === link.id && <span className="absolute bottom-2 left-0 right-0 h-[2px] rounded-full bg-[#0E7748]" />}
+          </a>)}
         </nav>
-
-        {/* Header Right Action (WhatsApp CTA) */}
-        <div className="hidden md:flex items-center shrink-0">
-          <a
-            href={getWhatsAppUrl(WHATSAPP_MESSAGES.header)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#003D22] hover:bg-[#07552C] text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-sm transition-all duration-200 hover:shadow-md hover:scale-[1.03] active:scale-[0.98]"
-          >
-            <WhatsAppIcon className="w-4 h-4 text-[#FFD600] shrink-0" />
-            <span>Fale Conosco</span>
+        <div className="hidden lg:flex shrink-0">
+          <a href={getWhatsAppUrl(WHATSAPP_MESSAGES.header)} target="_blank" rel="noopener noreferrer" className="btn-primary !py-3 !px-5 text-sm">
+            <WhatsAppIcon className="w-4 h-4" /> Solicitar orçamento <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>
-
-        {/* Mobile Hamburger Button */}
-        <button
-          type="button"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-lg text-gray-800 hover:text-[#003D22] hover:bg-gray-100 transition-colors shrink-0"
-          aria-label={mobileMenuOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'}
-          aria-expanded={mobileMenuOpen}
-        >
-          {mobileMenuOpen ? (
-            <X className="w-6 h-6 text-[#003D22]" />
-          ) : (
-            <Menu className="w-6 h-6 text-[#003D22]" />
-          )}
+        <button type="button" className="lg:hidden w-11 h-11 flex items-center justify-center rounded-xl bg-[#EEF5EF] text-[#06472A]" onClick={() => setMenuOpen(open => !open)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} aria-controls="menu-mobile">
+          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
-
-      {/* Mobile Menu Dropdown */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 shadow-xl px-5 py-6 animate-in slide-in-from-top-2 duration-200">
-          <nav className="flex flex-col gap-2.5">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.id
-              return (
-                <a
-                  key={link.id}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className={`px-3 py-2.5 rounded-lg text-base font-semibold transition-colors flex items-center justify-between ${
-                    isActive
-                      ? 'bg-[#003D22]/10 text-[#003D22] font-bold'
-                      : 'text-gray-700 hover:bg-gray-50'
-                  }`}
-                >
-                  <span>{link.label}</span>
-                  {isActive && <span className="w-2 h-2 rounded-full bg-[#003D22]" />}
-                </a>
-              )
-            })}
-
-            <div className="pt-4 border-t border-gray-100 flex flex-col gap-3">
-              <a
-                href={getWhatsAppUrl(WHATSAPP_MESSAGES.header)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 bg-[#003D22] hover:bg-[#07552C] text-white py-3 rounded-full font-semibold shadow-md text-base"
-              >
-                <WhatsAppIcon className="w-5 h-5 text-[#FFD600]" />
-                <span>Fale Conosco no WhatsApp</span>
-              </a>
-
-              <a
-                href={`tel:${COMPANY_INFO.phoneRaw}`}
-                className="w-full inline-flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 py-2.5 rounded-full font-medium text-sm"
-              >
-                <Phone className="w-4 h-4 text-[#003D22]" />
-                <span>Ligar: {COMPANY_INFO.phoneDisplay}</span>
-              </a>
-
-              <p className="text-xs text-gray-500 text-center flex items-center justify-center gap-1 mt-1">
-                <MapPin className="w-3.5 h-3.5 text-gray-400" />
-                <span>São José do Rio Preto – SP</span>
-              </p>
-            </div>
-          </nav>
+      {menuOpen && <nav id="menu-mobile" className="lg:hidden border-t border-[#E7ECE8] bg-white px-5 pt-3 pb-5 shadow-xl" aria-label="Navegação móvel">
+        <div className="flex flex-col gap-1 max-w-xl mx-auto">
+          {links.map(link => <a key={link.id} href={`#${link.id}`} onClick={() => setMenuOpen(false)} className="px-3 py-3.5 rounded-xl font-semibold text-[#183A29] hover:bg-[#EEF5EF]">{link.label}</a>)}
+          <a href={getWhatsAppUrl(WHATSAPP_MESSAGES.header)} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)} className="btn-primary mt-3"><WhatsAppIcon className="w-5 h-5" /> Solicitar orçamento</a>
         </div>
-      )}
+      </nav>}
     </header>
   )
 }

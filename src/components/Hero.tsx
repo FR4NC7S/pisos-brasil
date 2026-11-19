@@ -1,104 +1,42 @@
 import React from 'react'
-import { ArrowRight } from 'lucide-react'
+import { ArrowDownRight, ArrowUpRight, MapPin, ShieldCheck } from 'lucide-react'
 import { getWhatsAppUrl, WHATSAPP_MESSAGES } from '../data/company'
 import { WhatsAppIcon } from './WhatsAppIcon'
 
-export const Hero: React.FC = () => {
-  return (
-    <section id="inicio" className="relative min-h-[500px] sm:min-h-[580px] md:min-h-[620px] lg:min-h-[660px] flex items-center overflow-hidden bg-[#002C19] w-full max-w-full">
-      {/* Background Image Container */}
-      <div className="absolute inset-0 z-0">
-        <picture>
-          <source srcSet="/images/hero_layout.webp?v=3" type="image/webp" />
-          <img
-            src="/images/hero_layout.jpg?v=3"
-            onError={(e) => {
-              ;(e.target as HTMLImageElement).src = '/images/hero_bg.jpg'
-            }}
-            alt="Área externa com pisos intertravados e piscina sofisticada"
-            className="w-full h-full object-cover object-[center_right] md:object-right"
-            loading="eager"
-            fetchPriority="high"
-          />
-        </picture>
-
-        {/* Dark Green Gradient Overlay on the Left matching reference layout */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#002C19] via-[#002C19]/90 md:via-[#002C19]/75 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#002C19]/85 via-[#002C19]/30 to-transparent md:hidden" />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16 md:py-24 w-full overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Left Column: Hero Content */}
-          <div className="lg:col-span-7 xl:col-span-7 max-w-2xl text-white">
-            {/* Subtitle tag */}
-            <div className="inline-block">
-              <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-[0.22em] uppercase text-gray-200 drop-shadow-sm">
-                PISOS E REVESTIMENTOS
-              </span>
-            </div>
-
-            {/* Main Headline */}
-            <h1 className="mt-2 sm:mt-3 text-2xl sm:text-4xl md:text-5xl lg:text-[3.2rem] font-extrabold tracking-tight leading-[1.14]">
-              <span className="text-white block">Qualidade e beleza</span>
-              <span className="text-[#FFD600] block drop-shadow-sm">para o seu projeto!</span>
-            </h1>
-
-            {/* Paragraph Description */}
-            <p className="mt-3.5 sm:mt-5 text-xs sm:text-base md:text-lg text-gray-200/95 leading-relaxed max-w-xl font-normal drop-shadow-sm">
-              Aqui você encontra pisos, revestimentos e materiais de alta qualidade para deixar seu ambiente ainda mais bonito e valorizado.
-            </p>
-
-            {/* Action CTA Button */}
-            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              <a
-                href={getWhatsAppUrl(WHATSAPP_MESSAGES.hero)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2.5 sm:gap-3 bg-[#FFD600] hover:bg-[#F0C800] text-[#002C19] font-bold text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3.5 rounded-full shadow-lg shadow-black/25 transition-all duration-200 hover:scale-[1.03] active:scale-[0.98]"
-              >
-                <WhatsAppIcon className="w-5 h-5 text-[#002C19] shrink-0" />
-                <span>Solicite um Orçamento</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </a>
-            </div>
-          </div>
-
-          {/* Right Column: Decorative Handwritten Script */}
-          <div className="lg:col-span-5 xl:col-span-5 flex justify-end">
-            <div className="relative p-2 sm:p-4 select-none text-right">
-              <span className="font-script text-2xl sm:text-4xl md:text-5xl text-white font-bold tracking-wide drop-shadow-[0_4px_8px_rgba(0,0,0,0.7)] leading-tight block">
-                Seu projeto
-                <br />
-                começa aqui!
-              </span>
-
-              {/* Decorative curved brush stroke under script text */}
-              <svg
-                className="w-36 sm:w-52 md:w-60 h-5 sm:h-6 ml-auto mt-1"
-                viewBox="0 0 240 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path
-                  d="M6 14C55 5 160 3 234 16"
-                  stroke="#FFD600"
-                  strokeWidth="5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M50 18C110 11 185 11 228 19"
-                  stroke="#FFD600"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </div>
-          </div>
+export const Hero: React.FC = () => (
+  <section id="inicio" className="relative isolate overflow-hidden bg-[#082C1E] text-white min-h-[610px] md:min-h-[690px] flex items-center">
+    <div className="absolute inset-0 -z-20">
+      <picture>
+        <source srcSet="/images/hero_layout.webp" type="image/webp" />
+        <img src="/images/hero_layout.jpg" alt="Área externa com revestimento e pisos de concreto" className="w-full h-full object-cover object-[63%_center]" fetchPriority="high" />
+      </picture>
+    </div>
+    <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(5,39,25,0.99)_0%,rgba(5,39,25,0.96)_28%,rgba(5,39,25,0.73)_55%,rgba(5,39,25,0.10)_100%)]" />
+    <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#072B1D]/80 via-transparent to-transparent" />
+    <div className="site-container w-full py-20 md:py-24 relative">
+      <div className="max-w-[750px]">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm text-[11px] sm:text-xs font-semibold uppercase tracking-[0.16em] text-white/90">
+          <span className="w-2 h-2 rounded-full bg-[#F6D54A]" /> Pisos, revestimentos e soluções para sua obra
+        </div>
+        <h1 className="mt-7 text-[clamp(2.55rem,5.8vw,5.25rem)] font-extrabold leading-[1.08] tracking-[-0.045em] max-w-[760px]">
+          A base de um <span className="text-[#F8D644]">grande projeto</span> começa aqui.
+        </h1>
+        <p className="mt-6 text-[15px] sm:text-lg text-white/80 leading-relaxed max-w-[595px]">
+          Pisos intertravados, calçadas, revestimentos, pedras naturais e muito mais. Escolha os materiais ideais para transformar seus espaços.
+        </p>
+        <div className="mt-9 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+          <a href={getWhatsAppUrl(WHATSAPP_MESSAGES.hero)} target="_blank" rel="noopener noreferrer" className="btn-yellow"><WhatsAppIcon className="w-5 h-5" /> Peça seu orçamento <ArrowUpRight className="w-4 h-4" /></a>
+          <a href="#produtos" className="btn-outline-light">Explorar produtos <ArrowDownRight className="w-4 h-4" /></a>
+        </div>
+        <div className="mt-11 flex flex-wrap gap-x-7 gap-y-3 text-white/80 text-xs sm:text-sm font-medium">
+          <span className="flex items-center gap-2"><ShieldCheck className="w-4.5 h-4.5 text-[#F8D644]" /> Qualidade em cada detalhe</span>
+          <span className="flex items-center gap-2"><MapPin className="w-4.5 h-4.5 text-[#F8D644]" /> São José do Rio Preto e região</span>
         </div>
       </div>
-    </section>
-  )
-}
+    </div>
+    <div className="absolute right-0 bottom-0 hidden xl:flex items-center gap-4 px-8 py-5 bg-white/95 backdrop-blur-sm text-[#0C3925] rounded-tl-3xl shadow-2xl">
+      <span className="w-11 h-11 flex items-center justify-center rounded-xl bg-[#E7F2EB]"><ShieldCheck className="w-5 h-5 text-[#0D7545]" /></span>
+      <div><strong className="block font-bold text-sm">Escolhas para cada ambiente</strong><span className="block text-xs text-[#5B7062] mt-0.5">Residencial · Comercial · Áreas externas</span></div>
+    </div>
+  </section>
+)
